@@ -14,9 +14,9 @@ function Row({title, fetchUrl, isLargeRow}) {
     useEffect(() => {
         // [], run only once when row loads
         async function fetchData() {
-            const requests = await axios.get(fetchUrl);
-            setMovies(requests.data.results);
-            return requests;
+            const request = await axios.get(fetchUrl);
+            setMovies(request.data.results);
+            return request;
         }
         fetchData();
     }, [fetchUrl]);
