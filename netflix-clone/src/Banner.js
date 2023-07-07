@@ -21,11 +21,28 @@ function Banner() {
 
 
   return (
-    <header>
-        {/* background img */}
-        {/* title */}
-        {/* div > Play + My List */}
-        {/* description */}
+    <header className='banner'
+        style={{
+            backgroundSize: 'cover',
+            backgroundImage: `url(
+                "https://image.tmdb.org/t/p/original/${movie?.backdrop_path}"
+            )`,
+            backgroundPosition: 'center center',
+        }}
+    >
+        <div className='banner-content'>
+            {/* Use movie name as h1, optional chaining to find the variable for movie name */}
+            <h1>{movie?.title || movie?.name || movie?.original_name}</h1>
+
+            {/* Play and My List Buttons */}
+            <div className="banner-buttons">
+                <button className="banner-button">Play</button>
+                <button className="banner-button">My List</button>
+            </div>
+
+            {/* Movie Description fetched from TMDB */}
+            <h1 className="banner-description">{movie?.overview}</h1>
+        </div>
     </header>
   )
 }
