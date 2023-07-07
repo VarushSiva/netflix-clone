@@ -26,18 +26,19 @@ function Row({title, fetchUrl, isLargeRow}) {
         width: "100%",
         playerVars: {
             autoplay: 1,
-        }
-    }
+        },
+    };
 
     const handleClick = (movie) => {
         if (trailerUrl) {
             setTrailerUrl('');
         } else {
             movieTrailer(movie?.name || "")
-            .then(url => {
+            .then((url) => {
                 const urlParams = new URLSearchParams(new URL(url).search);
-                urlParams.get('v')
-            }).catch(error => console.log(error));
+                setTrailerUrl(urlParams.get('v'));
+            })
+            .catch(error => console.log(error));
         }
     }
 
