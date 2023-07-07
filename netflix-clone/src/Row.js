@@ -4,7 +4,7 @@ import "./Row.css";
 
 const base_url = "https://image.tmdb.org/t/p/original";
 
-function Row({title, fetchUrl}) {
+function Row({title, fetchUrl, isLargeRow}) {
     const  [movies, setMovies] = useState([]);
 
     // Snippet of code which runs based on specific conditions
@@ -18,14 +18,18 @@ function Row({title, fetchUrl}) {
         fetchData();
     }, [fetchUrl]);
 
-    // Row Posters
+    // Row Posters > Large poster gets sep css
     return (
         <div className='row'>
             <h2>{title}</h2>
 
             <div className='row-posters'>
                 {movies.map(movie => (
-                    <img key={movie.id} className="row-poster" src={`${base_url}${movie.poster_path}`} alt={movie.name} />
+                    <img 
+                    key={movie.id} 
+                    className={`row-poster ${isLargeRow && "row-posterLarge"}`} 
+                    src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} 
+                    alt={movie.name} />
                 ))}
             </div>
 
