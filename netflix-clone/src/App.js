@@ -9,7 +9,7 @@ function App() {
     <div className="app">
       {/* Create Banner using a Movie */}
       <Banner />
-      <h1>Netflix Clone</h1>
+
       {/* Fetch Movies from TMDB & makes Netflix Originals Large Posters */}
       <Row title="NETFLIX ORIGINALS" fetchUrl={requests.fetchNetflixOriginals} isLargeRow />
       <Row title="Trending Now" fetchUrl={requests.fetchTrending} />

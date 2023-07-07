@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from './axios';
 import requests from './requests';
+import './Banner.css';
 
 function Banner() {
     const [movie, setMovie] =  useState([]);
@@ -19,6 +20,10 @@ function Banner() {
         fetchData();
     }, []);
 
+    // adds ... to long banner descriptions
+    function truncate(str, n) {
+        return str?.length > n ? str.substr(0, n-1) + "..." : str;
+    }
 
   return (
     <header className='banner'
@@ -32,7 +37,7 @@ function Banner() {
     >
         <div className='banner-content'>
             {/* Use movie name as h1, optional chaining to find the variable for movie name */}
-            <h1>{movie?.title || movie?.name || movie?.original_name}</h1>
+            <h1 className='banner-title'>{movie?.title || movie?.name || movie?.original_name}</h1>
 
             {/* Play and My List Buttons */}
             <div className="banner-buttons">
@@ -40,8 +45,8 @@ function Banner() {
                 <button className="banner-button">My List</button>
             </div>
 
-            {/* Movie Description fetched from TMDB */}
-            <h1 className="banner-description">{movie?.overview}</h1>
+            {/* Movie Description fetched from TMDB > truncated */}
+            <h1 className="banner-description">{truncate(movie?.overview, 150)}</h1>
         </div>
     </header>
   )
