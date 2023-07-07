@@ -1,0 +1,22 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+}
+
+.nav-logo {
+    position: fixed;
+    left: 20;
+    width: 80px;
+    object-fit: contain;
+}
+
+.nav-avatar {
+    position: fixed;
+    right: 20px;
+    width: 30px;
+    object-fit: contain;
+}
